@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { Package, Truck, CheckCircle, Clock } from "lucide-react";
+import { Package, Truck, CheckCircle, Clock, ChevronLeft } from "lucide-react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { getUnsplashImageUrl } from "../utils/unsplash";
 
@@ -97,7 +97,12 @@ export function Orders() {
 
   return (
     <div className="container mx-auto px-4 py-6">
-      <h1 className="text-2xl font-bold mb-6">My Orders</h1>
+      <div className="flex items-center gap-4 mb-6">
+        <Link to="/account" className="p-2 hover:bg-gray-100 rounded-full">
+          <ChevronLeft className="w-6 h-6" />
+        </Link>
+        <h1 className="text-2xl font-bold">My Orders</h1>
+      </div>
 
       {orders.length === 0 ? (
         <div className="text-center py-20">
@@ -114,7 +119,7 @@ export function Orders() {
         <div className="space-y-4">
           {orders.map((order) => {
             const StatusIcon = statusConfig[order.status].icon;
-            
+
             return (
               <div key={order.id} className="bg-white rounded-lg p-6">
                 <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-3">
@@ -124,9 +129,8 @@ export function Orders() {
                   </div>
                   <div className="flex items-center gap-4">
                     <span
-                      className={`flex items-center gap-2 px-4 py-2 rounded-full font-medium ${
-                        statusConfig[order.status].color
-                      }`}
+                      className={`flex items-center gap-2 px-4 py-2 rounded-full font-medium ${statusConfig[order.status].color
+                        }`}
                     >
                       <StatusIcon className="w-4 h-4" />
                       {statusConfig[order.status].text}
