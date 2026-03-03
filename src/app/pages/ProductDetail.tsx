@@ -39,17 +39,17 @@ export function ProductDetail() {
   };
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-white dark:bg-gray-950 min-h-screen">
       {/* Header */}
-      <div className="sticky top-0 bg-white border-b z-40 px-4 py-3">
+      <div className="sticky top-0 bg-white dark:bg-gray-900 border-b dark:border-gray-800 z-40 px-4 py-3">
         <div className="container mx-auto flex items-center justify-between">
-          <Link to="/catalog" className="p-2 hover:bg-gray-100 rounded-full">
-            <ChevronLeft className="w-6 h-6" />
+          <Link to="/catalog" className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full">
+            <ChevronLeft className="w-6 h-6 dark:text-gray-300" />
           </Link>
-          <h1 className="text-lg font-semibold flex-1 mx-4 truncate">{product.name}</h1>
+          <h1 className="text-lg font-semibold flex-1 mx-4 truncate dark:text-gray-100">{product.name}</h1>
           <div className="flex items-center gap-2">
-            <button className="p-2 hover:bg-gray-100 rounded-full">
-              <Share2 className="w-5 h-5" />
+            <button className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full">
+              <Share2 className="w-5 h-5 dark:text-gray-300" />
             </button>
           </div>
         </div>
@@ -59,7 +59,7 @@ export function ProductDetail() {
         <div className="grid lg:grid-cols-2 gap-8 mb-12">
           {/* Product Images */}
           <div>
-            <div className="relative aspect-square bg-gray-100 rounded-2xl overflow-hidden mb-4">
+            <div className="relative aspect-square bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden mb-4">
               <ImageWithFallback
                 src={getUnsplashImageUrl(product.image, 800, 800)}
                 alt={product.name}
@@ -70,15 +70,15 @@ export function ProductDetail() {
                   {product.discount}% OFF
                 </div>
               )}
-              <button className="absolute top-4 right-4 p-3 bg-white rounded-full hover:bg-red-50">
-                <Heart className="w-6 h-6" />
+              <button className="absolute top-4 right-4 p-3 bg-white dark:bg-gray-800 rounded-full hover:bg-red-50 dark:hover:bg-red-900">
+                <Heart className="w-6 h-6 dark:text-gray-300" />
               </button>
             </div>
             
             {/* Thumbnail images */}
             <div className="grid grid-cols-4 gap-2">
               {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="aspect-square bg-gray-100 rounded-lg overflow-hidden border-2 border-transparent hover:border-blue-600 cursor-pointer">
+                <div key={i} className="aspect-square bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden border-2 border-transparent hover:border-blue-600 dark:hover:border-blue-400 cursor-pointer">
                   <ImageWithFallback
                     src={getUnsplashImageUrl(product.image)}
                     alt={`${product.name} ${i}`}
@@ -91,7 +91,7 @@ export function ProductDetail() {
 
           {/* Product Info */}
           <div>
-            <h2 className="text-2xl md:text-3xl font-bold mb-3">{product.name}</h2>
+            <h2 className="text-2xl md:text-3xl font-bold mb-3 dark:text-gray-100">{product.name}</h2>
 
             {/* Rating */}
             <div className="flex items-center gap-2 mb-4">
@@ -102,24 +102,24 @@ export function ProductDetail() {
                     className={`w-5 h-5 ${
                       i < Math.floor(product.rating)
                         ? "fill-yellow-400 text-yellow-400"
-                        : "text-gray-300"
+                        : "text-gray-300 dark:text-gray-600"
                     }`}
                   />
                 ))}
               </div>
-              <span className="text-sm text-gray-600">
+              <span className="text-sm text-gray-600 dark:text-gray-400">
                 {product.rating} ({product.reviews} Review)
               </span>
             </div>
 
             {/* Price */}
             <div className="flex items-center gap-3 mb-6">
-              <span className="text-3xl md:text-4xl font-bold text-blue-600">
+              <span className="text-3xl md:text-4xl font-bold text-blue-600 dark:text-blue-400">
                 ${product.price}
               </span>
               {product.originalPrice && (
                 <>
-                  <span className="text-xl text-gray-400 line-through">
+                  <span className="text-xl text-gray-400 dark:text-gray-500 line-through">
                     ${product.originalPrice}
                   </span>
                   <span className="text-red-500 font-medium">
@@ -132,7 +132,7 @@ export function ProductDetail() {
             {/* Size Selection */}
             {product.sizes && (
               <div className="mb-6">
-                <h3 className="text-sm font-semibold mb-3">Select Size</h3>
+                <h3 className="text-sm font-semibold mb-3 dark:text-gray-200">Select Size</h3>
                 <div className="flex flex-wrap gap-2">
                   {product.sizes.map((size) => (
                     <button
@@ -140,8 +140,8 @@ export function ProductDetail() {
                       onClick={() => setSelectedSize(size)}
                       className={`w-12 h-12 rounded-full border-2 font-medium transition ${
                         selectedSize === size
-                          ? "border-blue-600 bg-blue-50 text-blue-600"
-                          : "border-gray-300 hover:border-gray-400"
+                          ? "border-blue-600 dark:border-blue-400 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400"
+                          : "border-gray-300 dark:border-gray-600 dark:text-gray-300 hover:border-gray-400 dark:hover:border-gray-500"
                       }`}
                     >
                       {size}
@@ -154,7 +154,7 @@ export function ProductDetail() {
             {/* Color Selection */}
             {product.colors && (
               <div className="mb-6">
-                <h3 className="text-sm font-semibold mb-3">Select Color</h3>
+                <h3 className="text-sm font-semibold mb-3 dark:text-gray-200">Select Color</h3>
                 <div className="flex flex-wrap gap-2">
                   {product.colors.map((color) => (
                     <button
@@ -162,8 +162,8 @@ export function ProductDetail() {
                       onClick={() => setSelectedColor(color)}
                       className={`w-10 h-10 rounded-full border-2 transition ${
                         selectedColor === color
-                          ? "border-blue-600 scale-110"
-                          : "border-gray-300"
+                          ? "border-blue-600 dark:border-blue-400 scale-110"
+                          : "border-gray-300 dark:border-gray-600"
                       }`}
                     >
                       <div className={`w-full h-full rounded-full ${colorMap[color]}`} />
@@ -175,18 +175,18 @@ export function ProductDetail() {
 
             {/* Specification */}
             <div className="mb-6">
-              <h3 className="text-sm font-semibold mb-3">Specification</h3>
-              <div className="bg-gray-50 rounded-lg p-4 space-y-2 text-sm">
+              <h3 className="text-sm font-semibold mb-3 dark:text-gray-200">Specification</h3>
+              <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 space-y-2 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Shown:</span>
-                  <span className="font-medium">Blue/Anthracite/Watermelon/White</span>
+                  <span className="text-gray-600 dark:text-gray-400">Shown:</span>
+                  <span className="font-medium dark:text-gray-200">Blue/Anthracite/Watermelon/White</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Style:</span>
-                  <span className="font-medium">CD0113-400</span>
+                  <span className="text-gray-600 dark:text-gray-400">Style:</span>
+                  <span className="font-medium dark:text-gray-200">CD0113-400</span>
                 </div>
               </div>
-              <p className="mt-4 text-sm text-gray-600 leading-relaxed">
+              <p className="mt-4 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
                 The Nike Air Max 270 React ENG combines a full-length React foam midsole
                 with a 270 Max Air unit for unrivaled comfort and a striking visual
                 experience.
@@ -195,17 +195,17 @@ export function ProductDetail() {
 
             {/* Quantity and Add to Cart */}
             <div className="flex gap-4 mb-6">
-              <div className="flex items-center border rounded-lg">
+              <div className="flex items-center border dark:border-gray-700 rounded-lg">
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="px-4 py-3 hover:bg-gray-50"
+                  className="px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800 dark:text-gray-300"
                 >
                   -
                 </button>
-                <span className="px-6 py-3 font-medium">{quantity}</span>
+                <span className="px-6 py-3 font-medium dark:text-gray-200">{quantity}</span>
                 <button
                   onClick={() => setQuantity(quantity + 1)}
-                  className="px-4 py-3 hover:bg-gray-50"
+                  className="px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800 dark:text-gray-300"
                 >
                   +
                 </button>
@@ -217,17 +217,17 @@ export function ProductDetail() {
             </div>
 
             {/* Reviews */}
-            <div className="border-t pt-6">
+            <div className="border-t dark:border-gray-800 pt-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold">Review Product</h3>
-                <Link to="#" className="text-blue-600 text-sm">
+                <h3 className="text-lg font-semibold dark:text-gray-100">Review Product</h3>
+                <Link to="#" className="text-blue-600 dark:text-blue-400 text-sm">
                   See More
                 </Link>
               </div>
 
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <div className="w-12 h-12 bg-gray-200 rounded-full overflow-hidden shrink-0">
+                  <div className="w-12 h-12 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden shrink-0">
                     <ImageWithFallback
                       src="person portrait"
                       alt="James Lawson"
@@ -235,7 +235,7 @@ export function ProductDetail() {
                     />
                   </div>
                   <div>
-                    <div className="font-medium mb-1">James Lawson</div>
+                    <div className="font-medium mb-1 dark:text-gray-200">James Lawson</div>
                     <div className="flex items-center gap-1 mb-2">
                       {Array.from({ length: 5 }).map((_, i) => (
                         <Star
@@ -244,13 +244,13 @@ export function ProductDetail() {
                         />
                       ))}
                     </div>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
                       air max are always very comfortable fit, clean and just perfect in
                       every way. just the box was too small and scrunched the sneakers up
                       a little bit, not sure if the box was always this small but the 90s
                       are and will always be one of my favorites.
                     </p>
-                    <div className="text-xs text-gray-400 mt-2">December 10, 2018</div>
+                    <div className="text-xs text-gray-400 dark:text-gray-500 mt-2">December 10, 2018</div>
                   </div>
                 </div>
               </div>
@@ -260,7 +260,7 @@ export function ProductDetail() {
 
         {/* You Might Also Like */}
         <div>
-          <h2 className="text-xl md:text-2xl font-bold mb-6">You Might Also Like</h2>
+          <h2 className="text-xl md:text-2xl font-bold mb-6 dark:text-gray-100">You Might Also Like</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
             {relatedProducts.slice(0, 5).map((p) => (
               <ProductCard key={p.id} product={p} />

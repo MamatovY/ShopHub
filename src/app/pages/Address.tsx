@@ -27,29 +27,29 @@ export function Address() {
   return (
     <div className="container mx-auto px-4 py-6 max-w-3xl">
       <div className="flex items-center gap-4 mb-6">
-        <Link to="/account" className="p-2 hover:bg-gray-100 rounded-full">
-          <ChevronLeft className="w-6 h-6" />
+        <Link to="/account" className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">
+          <ChevronLeft className="w-6 h-6 dark:text-gray-100" />
         </Link>
-        <h1 className="text-2xl font-bold">Address</h1>
+        <h1 className="text-2xl font-bold dark:text-gray-100">Address</h1>
       </div>
 
       <div className="space-y-4 mb-6">
         {addresses.map((address, index) => (
           <div
             key={address.id}
-            className={`bg-white rounded-lg p-6 border-2 ${
-              index === 0 ? "border-blue-600" : "border-gray-200"
+            className={`bg-white dark:bg-gray-800 rounded-lg p-6 border-2 ${
+              index === 0 ? "border-blue-600 dark:border-blue-500" : "border-gray-200 dark:border-gray-700"
             }`}
           >
             <div className="flex justify-between items-start mb-3">
-              <h3 className="font-semibold text-lg">{address.name}</h3>
-              <button className="p-2 hover:bg-gray-100 rounded-full">
-                <Trash2 className="w-5 h-5 text-gray-400" />
+              <h3 className="font-semibold text-lg dark:text-gray-100">{address.name}</h3>
+              <button className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">
+                <Trash2 className="w-5 h-5 text-gray-400 dark:text-gray-500" />
               </button>
             </div>
             
-            <p className="text-gray-600 mb-3">{address.address}</p>
-            <p className="text-gray-600 mb-4">{address.phone}</p>
+            <p className="text-gray-600 dark:text-gray-400 mb-3">{address.address}</p>
+            <p className="text-gray-600 dark:text-gray-400 mb-4">{address.phone}</p>
 
             <Link
               to={`/add-address?edit=${address.id}`}

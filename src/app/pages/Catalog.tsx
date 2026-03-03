@@ -56,10 +56,10 @@ export function Catalog() {
   return (
     <div className="container mx-auto px-4 py-6">
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold">Catalog</h1>
+        <h1 className="text-2xl font-bold dark:text-gray-100">Catalog</h1>
         <button
           onClick={() => setShowFilters(!showFilters)}
-          className="flex items-center gap-2 px-4 py-2 border rounded-lg hover:bg-gray-50"
+          className="flex items-center gap-2 px-4 py-2 border dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 dark:text-gray-100"
         >
           <SlidersHorizontal className="w-4 h-4" />
           Filters
@@ -69,12 +69,12 @@ export function Catalog() {
       <div className="flex gap-6">
         {/* Filters Sidebar - Desktop */}
         <div className="hidden lg:block w-64 shrink-0">
-          <div className="bg-white rounded-lg p-4 sticky top-24">
-            <h3 className="font-semibold mb-4">Filters</h3>
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 sticky top-24">
+            <h3 className="font-semibold mb-4 dark:text-gray-100">Filters</h3>
 
             {/* Categories */}
             <div className="mb-6">
-              <h4 className="text-sm font-medium mb-3">Categories</h4>
+              <h4 className="text-sm font-medium mb-3 dark:text-gray-200">Categories</h4>
               <div className="space-y-2">
                 {categories.map((category) => (
                   <label key={category.id} className="flex items-center gap-2 cursor-pointer">
@@ -84,7 +84,7 @@ export function Catalog() {
                       onChange={() => toggleCategory(category.id)}
                       className="rounded"
                     />
-                    <span className="text-sm">{category.name}</span>
+                    <span className="text-sm dark:text-gray-300">{category.name}</span>
                   </label>
                 ))}
               </div>
@@ -92,21 +92,21 @@ export function Catalog() {
 
             {/* Price Range */}
             <div className="mb-6">
-              <h4 className="text-sm font-medium mb-3">Price Range</h4>
+              <h4 className="text-sm font-medium mb-3 dark:text-gray-200">Price Range</h4>
               <div className="flex items-center gap-2">
                 <input
                   type="number"
                   value={priceRange[0]}
                   onChange={(e) => setPriceRange([Number(e.target.value), priceRange[1]])}
-                  className="w-20 px-2 py-1 border rounded text-sm"
+                  className="w-20 px-2 py-1 border dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 rounded text-sm"
                   placeholder="Min"
                 />
-                <span>-</span>
+                <span className="dark:text-gray-400">-</span>
                 <input
                   type="number"
                   value={priceRange[1]}
                   onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])}
-                  className="w-20 px-2 py-1 border rounded text-sm"
+                  className="w-20 px-2 py-1 border dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 rounded text-sm"
                   placeholder="Max"
                 />
               </div>
@@ -114,11 +114,11 @@ export function Catalog() {
 
             {/* Sort By */}
             <div>
-              <h4 className="text-sm font-medium mb-3">Sort By</h4>
+              <h4 className="text-sm font-medium mb-3 dark:text-gray-200">Sort By</h4>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="w-full px-3 py-2 border rounded-lg text-sm"
+                className="w-full px-3 py-2 border dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 rounded-lg text-sm"
               >
                 <option value="popular">Most Popular</option>
                 <option value="price-low">Price: Low to High</option>
@@ -131,7 +131,7 @@ export function Catalog() {
 
         {/* Products Grid */}
         <div className="flex-1">
-          <div className="mb-4 text-sm text-gray-600">
+          <div className="mb-4 text-sm text-gray-600 dark:text-gray-400">
             Showing {filteredProducts.length} products
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -146,19 +146,19 @@ export function Catalog() {
       {showFilters && (
         <div className="lg:hidden fixed inset-0 bg-black/50 z-50" onClick={() => setShowFilters(false)}>
           <div
-            className="absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl p-6 max-h-[80vh] overflow-y-auto"
+            className="absolute bottom-0 left-0 right-0 bg-white dark:bg-gray-800 rounded-t-2xl p-6 max-h-[80vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-lg font-semibold">Filters</h3>
+              <h3 className="text-lg font-semibold dark:text-gray-100">Filters</h3>
               <button onClick={() => setShowFilters(false)}>
-                <X className="w-6 h-6" />
+                <X className="w-6 h-6 dark:text-gray-300" />
               </button>
             </div>
 
             {/* Mobile Categories */}
             <div className="mb-6">
-              <h4 className="text-sm font-medium mb-3">Categories</h4>
+              <h4 className="text-sm font-medium mb-3 dark:text-gray-200">Categories</h4>
               <div className="space-y-2">
                 {categories.map((category) => (
                   <label key={category.id} className="flex items-center gap-2 cursor-pointer">
@@ -168,7 +168,7 @@ export function Catalog() {
                       onChange={() => toggleCategory(category.id)}
                       className="rounded"
                     />
-                    <span className="text-sm">{category.name}</span>
+                    <span className="text-sm dark:text-gray-300">{category.name}</span>
                   </label>
                 ))}
               </div>
@@ -176,21 +176,21 @@ export function Catalog() {
 
             {/* Mobile Price Range */}
             <div className="mb-6">
-              <h4 className="text-sm font-medium mb-3">Price Range</h4>
+              <h4 className="text-sm font-medium mb-3 dark:text-gray-200">Price Range</h4>
               <div className="flex items-center gap-2">
                 <input
                   type="number"
                   value={priceRange[0]}
                   onChange={(e) => setPriceRange([Number(e.target.value), priceRange[1]])}
-                  className="w-20 px-2 py-1 border rounded text-sm"
+                  className="w-20 px-2 py-1 border dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 rounded text-sm"
                   placeholder="Min"
                 />
-                <span>-</span>
+                <span className="dark:text-gray-400">-</span>
                 <input
                   type="number"
                   value={priceRange[1]}
                   onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])}
-                  className="w-20 px-2 py-1 border rounded text-sm"
+                  className="w-20 px-2 py-1 border dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 rounded text-sm"
                   placeholder="Max"
                 />
               </div>
@@ -198,11 +198,11 @@ export function Catalog() {
 
             {/* Mobile Sort By */}
             <div className="mb-6">
-              <h4 className="text-sm font-medium mb-3">Sort By</h4>
+              <h4 className="text-sm font-medium mb-3 dark:text-gray-200">Sort By</h4>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="w-full px-3 py-2 border rounded-lg text-sm"
+                className="w-full px-3 py-2 border dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 rounded-lg text-sm"
               >
                 <option value="popular">Most Popular</option>
                 <option value="price-low">Price: Low to High</option>

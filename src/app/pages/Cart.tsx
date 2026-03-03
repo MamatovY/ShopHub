@@ -75,14 +75,14 @@ export function Cart() {
 
   return (
     <div className="container mx-auto px-4 py-6">
-      <h1 className="text-2xl font-bold mb-6">Your Cart</h1>
+      <h1 className="text-2xl font-bold mb-6 dark:text-gray-100">Your Cart</h1>
 
       {cartItems.length === 0 ? (
         <div className="text-center py-20">
-          <p className="text-gray-500 mb-4">Your cart is empty</p>
+          <p className="text-gray-500 dark:text-gray-400 mb-4">Your cart is empty</p>
           <Link
             to="/catalog"
-            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-medium"
+            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700"
           >
             Continue Shopping
           </Link>
@@ -92,8 +92,8 @@ export function Cart() {
           {/* Cart Items */}
           <div className="lg:col-span-2 space-y-4">
             {cartItems.map((item) => (
-              <div key={item.id} className="bg-white rounded-lg p-4 flex gap-4">
-                <div className="w-24 h-24 bg-gray-100 rounded-lg overflow-hidden shrink-0">
+              <div key={item.id} className="bg-white dark:bg-gray-800 rounded-lg p-4 flex gap-4">
+                <div className="w-24 h-24 bg-gray-100 dark:bg-gray-700 rounded-lg overflow-hidden shrink-0">
                   <ImageWithFallback
                     src={getUnsplashImageUrl(item.image)}
                     alt={item.name}
@@ -103,47 +103,47 @@ export function Cart() {
 
                 <div className="flex-1">
                   <div className="flex justify-between mb-2">
-                    <h3 className="font-semibold">{item.name}</h3>
+                    <h3 className="font-semibold dark:text-gray-100">{item.name}</h3>
                     <div className="flex gap-2">
                       <button
                         onClick={() => toggleFavorite(item.id)}
-                        className="p-1 hover:bg-gray-100 rounded"
+                        className="p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded"
                       >
                         <Heart
                           className={`w-5 h-5 ${
                             item.isFavorite
                               ? "fill-red-500 text-red-500"
-                              : "text-gray-400"
+                              : "text-gray-400 dark:text-gray-500"
                           }`}
                         />
                       </button>
                       <button
                         onClick={() => removeItem(item.id)}
-                        className="p-1 hover:bg-gray-100 rounded"
+                        className="p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded"
                       >
-                        <Trash2 className="w-5 h-5 text-gray-400" />
+                        <Trash2 className="w-5 h-5 text-gray-400 dark:text-gray-500" />
                       </button>
                     </div>
                   </div>
 
                   <div className="flex items-center justify-between">
-                    <span className="text-blue-600 font-bold text-lg">
+                    <span className="text-blue-600 dark:text-blue-400 font-bold text-lg">
                       ${item.price}
                     </span>
 
-                    <div className="flex items-center gap-3 bg-gray-100 rounded-lg px-3 py-1">
+                    <div className="flex items-center gap-3 bg-gray-100 dark:bg-gray-700 rounded-lg px-3 py-1">
                       <button
                         onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                        className="hover:text-blue-600"
+                        className="hover:text-blue-600 dark:hover:text-blue-400 dark:text-gray-300"
                       >
                         <Minus className="w-4 h-4" />
                       </button>
-                      <span className="font-medium w-6 text-center">
+                      <span className="font-medium w-6 text-center dark:text-gray-200">
                         {item.quantity}
                       </span>
                       <button
                         onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                        className="hover:text-blue-600"
+                        className="hover:text-blue-600 dark:hover:text-blue-400 dark:text-gray-300"
                       >
                         <Plus className="w-4 h-4" />
                       </button>
@@ -156,8 +156,8 @@ export function Cart() {
 
           {/* Order Summary */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-lg p-6 sticky top-24">
-              <h2 className="font-semibold mb-4">Order Summary</h2>
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 sticky top-24">
+              <h2 className="font-semibold mb-4 dark:text-gray-100">Order Summary</h2>
 
               {/* Coupon Code */}
               <div className="mb-6">
@@ -170,13 +170,13 @@ export function Cart() {
                       setCouponError(false);
                     }}
                     placeholder="Enter Coupon Code"
-                    className={`flex-1 px-4 py-2 border rounded-lg ${
+                    className={`flex-1 px-3 lg:px-4 py-2 border rounded-lg text-sm dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 dark:placeholder-gray-400 ${
                       couponError ? "border-red-500" : ""
                     }`}
                   />
                   <button
                     onClick={applyCoupon}
-                    className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700"
+                    className="bg-blue-600 text-white px-3 lg:px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 whitespace-nowrap shrink-0"
                   >
                     Apply
                   </button>
@@ -191,22 +191,22 @@ export function Cart() {
               {/* Price Breakdown */}
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-gray-600">
+                  <span className="text-gray-600 dark:text-gray-400">
                     Items ({cartItems.length})
                   </span>
-                  <span className="font-medium">${subtotal.toFixed(2)}</span>
+                  <span className="font-medium dark:text-gray-200">${subtotal.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Shipping</span>
-                  <span className="font-medium">${shipping.toFixed(2)}</span>
+                  <span className="text-gray-600 dark:text-gray-400">Shipping</span>
+                  <span className="font-medium dark:text-gray-200">${shipping.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Import charges</span>
-                  <span className="font-medium">${importCharges.toFixed(2)}</span>
+                  <span className="text-gray-600 dark:text-gray-400">Import charges</span>
+                  <span className="font-medium dark:text-gray-200">${importCharges.toFixed(2)}</span>
                 </div>
-                <div className="border-t pt-3 flex justify-between text-lg">
-                  <span className="font-semibold">Total Price</span>
-                  <span className="font-bold text-blue-600">
+                <div className="border-t dark:border-gray-700 pt-3 flex justify-between text-lg">
+                  <span className="font-semibold dark:text-gray-100">Total Price</span>
+                  <span className="font-bold text-blue-600 dark:text-blue-400">
                     ${total.toFixed(2)}
                   </span>
                 </div>

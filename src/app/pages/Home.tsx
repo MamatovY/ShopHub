@@ -34,7 +34,7 @@ export function Home() {
   return (
     <div className="container mx-auto px-4 py-6">
       {/* Hero Banner */}
-      <div className="relative bg-gradient-to-r from-gray-800 to-gray-900 rounded-2xl overflow-hidden mb-6 h-[200px] md:h-[400px]">
+      <div className="relative bg-gradient-to-r from-gray-800 to-gray-900 dark:from-gray-900 dark:to-black rounded-2xl overflow-hidden mb-6 h-[200px] md:h-[400px]">
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1200&h=400&fit=crop"
@@ -49,14 +49,14 @@ export function Home() {
             50% Off
           </h1>
           <div className="flex gap-2 md:gap-4">
-            <div className="bg-white rounded-lg px-3 py-2 md:px-4 md:py-3">
-              <div className="text-lg md:text-2xl font-bold">{String(timeLeft.hours).padStart(2, "0")}</div>
+            <div className="bg-white dark:bg-gray-800 rounded-lg px-3 py-2 md:px-4 md:py-3">
+              <div className="text-lg md:text-2xl font-bold dark:text-white">{String(timeLeft.hours).padStart(2, "0")}</div>
             </div>
-            <div className="bg-white rounded-lg px-3 py-2 md:px-4 md:py-3">
-              <div className="text-lg md:text-2xl font-bold">{String(timeLeft.minutes).padStart(2, "0")}</div>
+            <div className="bg-white dark:bg-gray-800 rounded-lg px-3 py-2 md:px-4 md:py-3">
+              <div className="text-lg md:text-2xl font-bold dark:text-white">{String(timeLeft.minutes).padStart(2, "0")}</div>
             </div>
-            <div className="bg-white rounded-lg px-3 py-2 md:px-4 md:py-3">
-              <div className="text-lg md:text-2xl font-bold">{String(timeLeft.seconds).padStart(2, "0")}</div>
+            <div className="bg-white dark:bg-gray-800 rounded-lg px-3 py-2 md:px-4 md:py-3">
+              <div className="text-lg md:text-2xl font-bold dark:text-white">{String(timeLeft.seconds).padStart(2, "0")}</div>
             </div>
           </div>
         </div>
@@ -65,8 +65,8 @@ export function Home() {
       {/* Category Section */}
       <div className="mb-6">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg md:text-xl font-bold">Category</h2>
-          <Link to="/catalog" className="text-blue-600 text-sm flex items-center gap-1">
+          <h2 className="text-lg md:text-xl font-bold dark:text-gray-100">Category</h2>
+          <Link to="/catalog" className="text-blue-600 dark:text-blue-400 text-sm flex items-center gap-1">
             More Category
             <ChevronRight className="w-4 h-4" />
           </Link>
@@ -79,10 +79,10 @@ export function Home() {
               to={`/catalog?category=${category.id}`}
               className="flex flex-col items-center gap-2 min-w-[80px]"
             >
-              <div className="w-16 h-16 md:w-20 md:h-20 bg-blue-50 rounded-full flex items-center justify-center text-2xl md:text-3xl hover:bg-blue-100 transition">
+              <div className="w-16 h-16 md:w-20 md:h-20 bg-blue-50 dark:bg-blue-900/30 rounded-full flex items-center justify-center text-2xl md:text-3xl hover:bg-blue-100 dark:hover:bg-blue-900/50 transition">
                 {category.icon}
               </div>
-              <span className="text-xs md:text-sm text-center">{category.name}</span>
+              <span className="text-xs md:text-sm text-center dark:text-gray-300">{category.name}</span>
             </Link>
           ))}
         </div>
@@ -91,8 +91,8 @@ export function Home() {
       {/* Flash Sale Section */}
       <div className="mb-6">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg md:text-xl font-bold">Flash Sale</h2>
-          <Link to="/catalog?sale=true" className="text-blue-600 text-sm flex items-center gap-1">
+          <h2 className="text-lg md:text-xl font-bold dark:text-gray-100">Flash Sale</h2>
+          <Link to="/catalog?sale=true" className="text-blue-600 dark:text-blue-400 text-sm flex items-center gap-1">
             See More
             <ChevronRight className="w-4 h-4" />
           </Link>
@@ -108,8 +108,8 @@ export function Home() {
       {/* Mega Sale Section */}
       <div className="mb-6">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg md:text-xl font-bold">Mega Sale</h2>
-          <Link to="/catalog" className="text-blue-600 text-sm flex items-center gap-1">
+          <h2 className="text-lg md:text-xl font-bold dark:text-gray-100">Mega Sale</h2>
+          <Link to="/catalog" className="text-blue-600 dark:text-blue-400 text-sm flex items-center gap-1">
             See More
             <ChevronRight className="w-4 h-4" />
           </Link>
@@ -123,9 +123,9 @@ export function Home() {
       </div>
 
       {/* Recommended Products */}
-      <div className="bg-gradient-to-b from-gray-300 to-gray-100 rounded-2xl p-6 mb-6">
-        <h2 className="text-xl md:text-2xl font-bold mb-2">Recommended Product</h2>
-        <p className="text-gray-600 text-sm mb-6">We recommend the best for you</p>
+      <div className="bg-gradient-to-b from-gray-300 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl p-6 mb-6">
+        <h2 className="text-xl md:text-2xl font-bold mb-2 dark:text-gray-100">Recommended Product</h2>
+        <p className="text-gray-600 dark:text-gray-400 text-sm mb-6">We recommend the best for you</p>
         
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {recommendedProducts.slice(0, 8).map((product) => (
